@@ -1,0 +1,147 @@
+<br />
+<button class="btn btn-primary" (click)="goToChart()">Back To Chart</button>
+<h2 style="text-align: center">
+  Students Details passed with grade
+  <strong style="color: rgb(26, 194, 26)">{{ selectedGrade }}</strong>
+</h2>
+<br />
+<div class="container-sm">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Email</th>
+        <th scope="col">English</th>
+        <th scope="col">Science</th>
+        <th scope="col">Maths</th>
+        <th scope="col">Social Studies</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of filteredData">
+        <td>
+          <div *ngIf="student.isEdit">
+            <input
+              class="form-control"
+              class="width-normal"
+              type="text"
+              required
+              [(ngModel)]="student.name"
+            />
+          </div>
+          <div *ngIf="!student.isEdit">
+            {{ student.name }}
+          </div>
+        </td>
+        <td>
+          <div *ngIf="student.isEdit">
+            <input
+              class="form-control"
+              class="width-normal"
+              type="number"
+              required
+              [(ngModel)]="student.age"
+            />
+          </div>
+          <div *ngIf="!student.isEdit">
+            {{ student.age }}
+          </div>
+        </td>
+        <td>
+          <div *ngIf="student.isEdit">
+            <input
+              class="form-control"
+              class="width-full"
+              type="email"
+              required
+              [(ngModel)]="student.email"
+            />
+          </div>
+          <div *ngIf="!student.isEdit">
+            {{ student.email }}
+          </div>
+        </td>
+        <td>
+          <div *ngIf="student.isEdit">
+            <input
+              class="form-control"
+              class="width-normal"
+              type="number"
+              required
+              [(ngModel)]="student.marks[0].english"
+            />
+          </div>
+          <div *ngIf="!student.isEdit">
+            {{ student.marks[0].english }}
+          </div>
+        </td>
+        <td>
+          <div *ngIf="student.isEdit">
+            <input
+              class="form-control"
+              class="width-normal"
+              type="number"
+              required
+              [(ngModel)]="student.marks[0].science"
+            />
+          </div>
+          <div *ngIf="!student.isEdit">
+            {{ student.marks[0].science }}
+          </div>
+        </td>
+        <td>
+          <div *ngIf="student.isEdit">
+            <input
+              class="form-control"
+              class="width-normal"
+              type="number"
+              required
+              [(ngModel)]="student.marks[0].maths"
+            />
+          </div>
+          <div *ngIf="!student.isEdit">
+            {{ student.marks[0].maths }}
+          </div>
+        </td>
+        <td>
+          <div *ngIf="student.isEdit">
+            <input
+              class="form-control"
+              class="width-normal"
+              type="number"
+              required
+              [(ngModel)]="student.marks[0].socialStudies"
+            />
+          </div>
+          <div *ngIf="!student.isEdit">
+            {{ student.marks[0].socialStudies }}
+          </div>
+        </td>
+        <td>
+          <div *ngIf="student.isEdit">
+            <button
+              type="submit"
+              (click)="saveDetails(student)"
+              class="btn btn-success"
+            >
+              Save
+            </button>
+            <button
+              class="btn btn-outline-danger ml-2"
+              (click)="cancelClick(student)"
+            >
+              Cancel
+            </button>
+          </div>
+          <div *ngIf="!student.isEdit">
+            <button (click)="enableEdit(student)" class="btn btn-primary">
+              Edit
+            </button>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
